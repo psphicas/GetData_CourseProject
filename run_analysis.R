@@ -22,13 +22,13 @@ library(downloader)
 data_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 zip_file <- basename(URLdecode(data_url))
 
+# only download if zip isn't present
 if (!file.exists(zip_file)) {
         download(data_url, zip_file, mode = "wb")
 }
 
+# always extract a fresh copy of the data from the zip file
 work_dir <- tempfile()
-work_dir <- 'data'
-
 unzip(zip_file, exdir = work_dir, junkpaths = TRUE)
 
 #####################################################################
@@ -64,7 +64,7 @@ x.colnames <- gsub("std()", "StandardDeviation", x.colnames, fixed = TRUE)
 
 # spit out the old and new feature names (for the ones we are keeping)
 writeLines(paste(x.colnames, feature_names, sep = "\t")[desired],
-           "features_map.txt")
+           "features_transformed.txt")
 
 # now we can read the sensor (X) data
 x_train <- file.path(work_dir, "X_train.txt")
@@ -92,11 +92,13 @@ names(df.subject) <- "subject"
 # create the combined data frame
 df <- cbind(df.x, df.y, df.subject)
 
-# perform some cleanup
+# perform some cleanup of the environment and the filesystem
 rm(df.x, df.y, df.subject)
+unlink(work_dir, recursive = TRUE)
 
 #####################################################################
-# Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+# Creates a second, independent tidy data set with the average of
+# each variable for each activity and each subject.
 #####################################################################
 library(dplyr)
 
