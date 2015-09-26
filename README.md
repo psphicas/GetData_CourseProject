@@ -1,7 +1,5 @@
 # GetData_CourseProject
 
----
-
 Course Project for Getting and Cleaning Data
 
 https://class.coursera.org/getdata-032
@@ -9,8 +7,6 @@ https://class.coursera.org/getdata-032
 ---
 
 ## Introduction
-
----
 
 One of the most exciting areas in all of data science right now is
 wearable computing. Companies like Fitbit, Nike, and Jawbone Up are
@@ -42,8 +38,6 @@ subject.
 
 ## Instructions
 
----
-
 1. Clone this repository, or just download [run_analysis.R](run_analysis.R)
 
 2. From the R prompt, execute:
@@ -55,8 +49,6 @@ source('run_analysis.R')
 ---
 
 ## Notes
-
----
 
 ### File locations
 
