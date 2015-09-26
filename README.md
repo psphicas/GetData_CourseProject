@@ -1,5 +1,6 @@
 # GetData_CourseProject
 Course Project for Getting and Cleaning Data
+
 https://class.coursera.org/getdata-032
 
 One of the most exciting areas in all of data science right now is
@@ -28,4 +29,26 @@ set
 data set with the average of each variable for each activity and each
 subject.
 
+## Requirements
+The following R packages are required:
 
+downloader
+dplyr
+
+## Instructions
+Just execute run_analysis.R
+
+Input files (in current working directory):
+UCI HAR Dataset.zip
+        will be downloaded if not present
+
+Temporary files (created in system temp directory using tempfile()):
+extracted contents of UCI HAR Dataset.zip
+
+Output files:
+tidy.txt
+        the tidy dataset
+feature_map.txt
+        list of features in the tidy data set and their original features
+
+The 
