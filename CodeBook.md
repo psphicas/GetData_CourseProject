@@ -24,6 +24,9 @@ From the README.txt extracted from the data set:
 
 The following is a list of variables in the final data set
 
+
+Variable                                                     | Original Variable                                    
+------------------------------------------------------------ | ------------------------------
 timeBodyAccelerometer_Mean_X                                 | tBodyAcc-mean()-X             
 timeBodyAccelerometer_Mean_Y                                 | tBodyAcc-mean()-Y             
 timeBodyAccelerometer_Mean_Z                                 | tBodyAcc-mean()-Z             
