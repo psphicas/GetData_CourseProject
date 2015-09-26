@@ -48,6 +48,12 @@ source('run_analysis.R')
 
 ---
 
+## Script Operation
+
+Please refer to the Transformation Process in [CodeBook.md](CodeBook.md)
+
+---
+
 ## Notes
 
 ### File locations
