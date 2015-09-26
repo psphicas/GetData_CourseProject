@@ -90,10 +90,10 @@ df.subject <- rbind(read.table(subject_train), read.table(subject_test))
 names(df.subject) <- "subject"
 
 # create the combined data frame
-df <- cbind(df.x, df.y, df.subject)
+df <- cbind(df.x, df.subject, df.y)
 
 # perform some cleanup of the environment and the filesystem
-rm(df.x, df.y, df.subject)
+rm(df.x, df.subject, df.y)
 unlink(work_dir, recursive = TRUE)
 
 #####################################################################
