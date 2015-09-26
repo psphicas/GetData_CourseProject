@@ -1,4 +1,6 @@
-# Study Design
+# Code Book
+
+## Study Design
 
 For details on the study design, please reference the original study:
 
@@ -18,12 +20,26 @@ From the README.txt extracted from the data set:
 - Its activity label. 
 - An identifier of the subject who carried out the experiment.
 
-# Code Book
-
 ## Variables
 
-The following is a list of variables in the final data set
+Only measurements relating to mean and standard deviation were retained
+from the original data set. Specifically, these were variables containing
+mean() and std() in the name.
 
+The following additional transformations were made to the variable names
+in order to improve readability and descriptiveness:
+
+* Replace leading "t" with "time"
+* Replace leading "f" with "frequency"
+* Replace "Gyro" with "Gyroscope"
+* Replace "Acc" with "Accelerometer"
+* Replace "Mag" with "Magnitude"
+* Replace "BodyBody" with "Body"
+* Replace "-" with "_"
+* Replace "mean()" with "Mean"
+* Replace "std()" with "StandardDeviation"
+
+The following is a list of variables in the final data set:
 
 Variable                                                     | Original Variable                                    
 ------------------------------------------------------------ | ------------------------------
@@ -94,16 +110,21 @@ frequencyBodyGyroscopeMagnitude_StandardDeviation            | fBodyBodyGyroMag-
 frequencyBodyGyroscopeJerkMagnitude_Mean                     | fBodyBodyGyroJerkMag-mean()   
 frequencyBodyGyroscopeJerkMagnitude_StandardDeviation        | fBodyBodyGyroJerkMag-std()    
 
+## Transformation Process
 
-time : time domain
-frequency : frequency domain
+The detailed steps to go from the original data to the final tidy data set
+are documented in detail in the comments of [run_analysis.R](run_analysis.R)
 
-Body :
-Gravity :
+The following are some highlights:
 
-Gyroscope
-Accelerometer
-
-Magnitude
-JerkMagnitude
-
+1. `features.txt` is loaded, the desired features (containing -mean() and -std()) are  identified, and the names are cleaned up.
+2. The desired X measurements are loaded from `X_train.txt` and `X_test.txt` and are combined by rows into a data frame, `df.x`
+3. The activity labels are loaded from `Y_train.txt` and `Y_test.txt`, and are combined by rows into a data frame, `df.y`
+4. The activity names are loaded from `activity_labels.txt`, and the numeric
+activity codes in `df.y` are replaced with the labels.
+5. The subject identifiers are loaded from `subject_train.txt` and `subject_test.txt`, and are combined by rows into a data frame, `df.subject`
+6. The three data frames `df.x`, `df.subject`, `df.y`, are combined by columns into
+single data frame, `df`
+7. `df` is grouped by activity and subject, the mean of each measurement is taken,
+and the resulting data frame is stored as `tiny`
+8. `tiny` is exported to `tiny.txt`
