@@ -115,16 +115,23 @@ frequencyBodyGyroscopeJerkMagnitude_StandardDeviation        | fBodyBodyGyroJerk
 The detailed steps to go from the original data to the final tidy data set
 are documented in detail in the comments of [run_analysis.R](run_analysis.R)
 
-The following are some highlights:
+The following is an overview of the process:
 
-1. `features.txt` is loaded, the desired features (containing -mean() and -std()) are  identified, and the names are cleaned up.
+1. `features.txt` is loaded, the desired features (containing -mean() and -std()) are  identified, and the feature names are cleaned up.
+
 2. The desired X measurements are loaded from `X_train.txt` and `X_test.txt` and are combined by rows into a data frame, `df.x`
+
 3. The activity labels are loaded from `Y_train.txt` and `Y_test.txt`, and are combined by rows into a data frame, `df.y`
+
 4. The activity names are loaded from `activity_labels.txt`, and the numeric
 activity codes in `df.y` are replaced with the labels.
+
 5. The subject identifiers are loaded from `subject_train.txt` and `subject_test.txt`, and are combined by rows into a data frame, `df.subject`
+
 6. The three data frames `df.x`, `df.subject`, `df.y`, are combined by columns into
 single data frame, `df`
+
 7. `df` is grouped by activity and subject, the mean of each measurement is taken,
 and the resulting data frame is stored as `tiny`
+
 8. `tiny` is exported to `tiny.txt`
