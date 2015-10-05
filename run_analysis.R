@@ -74,8 +74,8 @@ df.x <- rbind(read.table(x_train, colClasses = x.colclasses, col.names = x.colna
               read.table(x_test, colClasses = x.colclasses, col.names = x.colnames))
 
 # read the label (Y) data
-y_train <- file.path(work_dir, "Y_train.txt")
-y_test <- file.path(work_dir, "Y_test.txt")
+y_train <- file.path(work_dir, "y_train.txt")
+y_test <- file.path(work_dir, "y_test.txt")
 df.y <- rbind(read.table(y_train), read.table(y_test))
 names(df.y) <- "activity"
 
